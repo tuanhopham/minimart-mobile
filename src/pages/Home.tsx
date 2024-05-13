@@ -6,9 +6,49 @@ import { ProductsList } from '../components/UI/ProductsList';
 import Services from "../services/Services";
 import Clock from '../components/UI/Clock';
 import counterImg from '../assets/images/counter-timer-img.png';
+import { useNavigation } from '@react-navigation/native';
+import { SearchBar } from '@rneui/themed';
+import COLORS from '../constants/color';
+const Home = () => {
+  
+  const year = new Date().getFullYear();
+//   const navigation = useNavigation();
 
-const Home: React.FC = () => {
-  const products =[
+  return (
+    <ScrollView>
+    <View style={{ flex: 1 }}>
+   
+    <View style={{ paddingHorizontal: 20, paddingTop:60,paddingBottom:20,backgroundColor:COLORS.primary,   flexDirection: 'row', alignItems: 'center' }}>
+    
+      <View style={{ flex: 1 }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold',color:'#fff'}}>Minimart </Text>
+        <Text style={{ fontSize: 16, marginBottom: 10 ,color:'#fff'}}>Trending product in {year}</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <Image source={{
+          uri: 'https://firebasestorage.googleapis.com/v0/b/minimart-f4870.appspot.com/o/images%2Flogo.webp?alt=media&token=89133479-a311-48f1-bf0e-cd5a84198dd5',
+        }} style={{ width: '100%', height: 100, resizeMode: 'cover' }} />
+      </View>
+    </View>
+    <SearchBar
+      placeholder="Search product..."
+      platform='android'
+    />
+    <Services />
+
+    <View style={{ backgroundColor: '#fff', paddingVertical: 20 }}>
+      <Text style={{ textAlign: 'center', fontSize: 24,fontWeight: 'bold' }}>Trending Products</Text>
+      <ProductsList data={products}  />
+    </View>
+
+ 
+  </View>
+  </ScrollView>
+  );
+};
+
+export default Home;
+const products =[
     {
         "price": 290,
         "imgUrl": [
@@ -259,54 +299,3 @@ const Home: React.FC = () => {
         ]
     }
 ]
-  const year = new Date().getFullYear();
-//   const navigation = useNavigation();
-
-  return (
-    <ScrollView>
-    <View style={{ flex: 1 }}>
-    <View style={{ backgroundColor: '#f5f5f5', paddingVertical: 20 }}>
-      <Text style={{ textAlign: 'center', fontSize: 20 }}>Trending product in {year}</Text>
-      <Text style={{ textAlign: 'center', fontSize: 24 }}>Make your Interior More Minimalistics & Modern</Text>
-      <Text style={{ textAlign: 'center', fontSize: 16, paddingHorizontal: 20 }}>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum</Text>
-      <TouchableOpacity style={{ alignSelf: 'center', backgroundColor: 'blue', padding: 10, marginTop: 20, borderRadius: 5 }} 
-        // onPress={() => navigation.navigate('Shop')}
-      >
-        <Text style={{ color: 'white', fontSize: 18 }}>SHOP NOW</Text>
-      </TouchableOpacity>
-    </View>
-
-    <Services />
-
-    <View style={{ backgroundColor: '#fff', paddingVertical: 20 }}>
-      <Text style={{ textAlign: 'center', fontSize: 24 }}>Trending Products</Text>
-      <ProductsList data={products} />
-    </View>
-
-    <View style={{ backgroundColor: '#fff', paddingVertical: 20 }}>
-      <Text style={{ textAlign: 'center', fontSize: 24 }}>Best Sales</Text>
-      <ProductsList data={products} />
-    </View>
-
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#fff', paddingVertical: 20 }}>
-      <View style={{ flex: 1 }}>
-        <ProductsList data={products} />
-      </View>
-      {/* <Image source={counterImg} style={{ width: '50%', height: 200 }} /> */}
-    </View>
-
-    <View style={{ backgroundColor: '#fff', paddingVertical: 20 }}>
-      <Text style={{ textAlign: 'center', fontSize: 24 }}>New Arrivals</Text>
-      <ProductsList data={products} />
-    </View>
-
-    <View style={{ backgroundColor: '#fff', paddingVertical: 20 }}>
-      <Text style={{ textAlign: 'center', fontSize: 24 }}>Popular in Category</Text>
-      <ProductsList data={products} />
-    </View>
-  </View>
-  </ScrollView>
-  );
-};
-
-export default Home;

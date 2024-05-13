@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 // import { useSelector, useDispatch } from 'react-redux';
 // import { addToCart } from '../../redux/actions/cartActions';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useNavigationContainerRef } from '@react-navigation/native';
+import COLORS from '../../constants/color';
 
 const ProductCard = ({ item }) => {
-//   const navigation = useNavigation();
+  const navigation = useNavigation();
 //   const dispatch = useDispatch();
-
   const handleAddToCart = () => {
     // dispatch(addToCart(item));
     // You can add toast notification using a library like react-native-toast-message
@@ -16,7 +16,7 @@ const ProductCard = ({ item }) => {
   return (
     <TouchableOpacity 
     style={styles.productItem} 
-    // onPress={() => navigation.navigate('ProductDetails', { productId: item.id } as { productId: string })}
+   onPress={()=>navigation.navigate('ProductDetails' as never)}
     >
   
       <View style={styles.productImg}>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   addToCartButton: {
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.primary,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,

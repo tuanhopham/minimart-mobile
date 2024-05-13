@@ -1,9 +1,12 @@
 // Import necessary modules from react-navigation
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../../pages/Home';
-
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "../../pages/Home";
+import { Header } from "@rneui/themed";
+import ProductDetails from "../../pages/ProductDetails";
+import Signup from "../../pages/Signup";
+import Login from "../../pages/Login";
 // Import your screens
 // import Cart from '../pages/Cart';
 // import Checkout from '../pages/Checkout';
@@ -24,12 +27,15 @@ const Stack = createNativeStackNavigator();
 export const AppRouter = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+     
+      <Stack.Navigator initialRouteName="Signup">
         <Stack.Screen name="Home" component={Home} />
-        {/* <Stack.Screen name="Cart" component={Cart} />
-        <Stack.Screen name="Checkout" component={Checkout} />
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ProductDetails" component={ProductDetails} />
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Login" component={Login} />
+        {/* <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Login" component={Login} />
+
         <Stack.Screen name="Shop" component={Shop} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Order" component={Order} />
